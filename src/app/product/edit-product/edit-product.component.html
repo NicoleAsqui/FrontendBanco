@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="form">
+      <h3>Editar producto</h3>
+      <form [formGroup]="productForm" (ngSubmit)="editProduct()">
+        <mat-form-field appearance="outline">
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="id" [attr.disabled]="true" />
+          <mat-error *ngIf="productForm.get('id')?.invalid && productForm.get('id')?.touched">
+            ID es requerido y debe tener entre 3 y 10 caracteres.
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" required />
+          <mat-error *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+            Nombre es requerido y debe tener al menos 5 caracteres.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="description" required></textarea>
+          <mat-error *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+            Descripción es requerida y debe tener al menos 10 caracteres.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Logo</mat-label>
+          <input matInput formControlName="logo" />
+          <mat-error *ngIf="productForm.get('logo')?.invalid && productForm.get('logo')?.touched">
+            Logo es requerido.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Liberación</mat-label>
+          <input matInput type="date" formControlName="date_release" required />
+          <mat-error *ngIf="productForm.get('date_release')?.errors?.['releaseDateInvalid'] && productForm.get('date_release')?.touched">
+            La fecha de liberación no puede ser anterior a hoy.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Revisión</mat-label>
+          <input matInput type="date" formControlName="date_revision" required />
+          <mat-error *ngIf="productForm.get('date_revision')?.errors?.['revisionDateInvalid'] && productForm.get('date_revision')?.touched">
+            La fecha de revisión debe ser un año después de la fecha de liberación.
+          </mat-error>
+        </mat-form-field>
+        
+  
+        <button mat-button type="button" (click)="redirectToProductList()" class="reiniciar">Regresar</button>
+        <button mat-raised-button color="primary" type="submit" class="enviar">Editar</button>
+      </form>
+    </div>
+    
+  </div>
+  
