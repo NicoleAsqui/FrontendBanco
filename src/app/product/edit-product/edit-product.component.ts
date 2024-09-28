@@ -27,7 +27,7 @@ export class EditProductComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router,
+    public router: Router,
     private dialog: MatDialog
   ) {
     this.productForm = this.fb.group({
@@ -39,7 +39,6 @@ export class EditProductComponent implements OnInit {
       date_revision: ['', Validators.required]
     });
 
-    // Validación de fechas
     this.productForm.get('date_release')?.valueChanges.subscribe(() => {
       this.validateReleaseDate();
     });

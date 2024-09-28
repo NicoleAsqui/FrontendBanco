@@ -30,7 +30,6 @@ export class AddProductComponent {
       date_revision: ['', Validators.required],
     });
 
-    // Custom validators for date comparison
     this.productForm.get('date_release')?.valueChanges.subscribe(() => {
       this.validateReleaseDate();
     });
@@ -59,7 +58,7 @@ export class AddProductComponent {
     if (releaseDate && revisionDate) {
       const releaseDateObj = new Date(releaseDate);
       const expectedRevisionDate = new Date(releaseDateObj);
-      expectedRevisionDate.setFullYear(releaseDateObj.getFullYear() + 1); // Add one year
+      expectedRevisionDate.setFullYear(releaseDateObj.getFullYear() + 1);
 
       if (new Date(revisionDate).getTime() !== expectedRevisionDate.getTime()) {
         this.productForm.get('date_revision')?.setErrors({ revisionDateInvalid: true });
@@ -93,7 +92,7 @@ export class AddProductComponent {
       });
     } else {
       console.error('Formulario inválido', this.productForm.errors);
-      this.errorMessage = 'Por favor, completa todos los campos requeridos correctamente.'; // Mensaje de error si el formulario es inválido
+      this.errorMessage = 'Por favor, completa todos los campos requeridos correctamente.'; 
     }
   }
 
