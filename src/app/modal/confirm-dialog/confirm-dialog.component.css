@@ -1,0 +1,29 @@
+.dialog-content {
+    padding: 20px; 
+    width: 100%; 
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.dialog-actions {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-column: span 2; 
+}
+
+.derecha, .izquierda {
+    font-family: "Segoe UI", sans-serif;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 60%; 
+    border: none; 
+}
+
+.derecha {
+    background-color: rgba(255, 234, 0, 0.7);
+}
+
+.izquierda {
+    background-color: rgba(113, 111, 111, 0.7); 
+}
