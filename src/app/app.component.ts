@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon'; // Import Material Icon Module
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [RouterModule, MatIconModule]
 })
+
 export class AppComponent {
-  title = 'front';
+  title = 'BANCO';
 }
