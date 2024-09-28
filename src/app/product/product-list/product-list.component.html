@@ -1,0 +1,50 @@
+
+<div class="container">
+  <div class="product-list">
+    <div class="header">
+      <input [(ngModel)]="searchQuery" placeholder="Search ..." class="search-input" />
+      <button (click)="addProduct()" class="add-button">Agregar</button>
+    </div>
+    <div class="table-wrapper">
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>Descripción</th>
+            <th>Fecha de Liberación</th>
+            <th>Fecha de Reestructuración</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of filteredProducts.slice(0, pageSize)">
+            <td>
+              <img [src]="product.logo" alt="{{ product.name }} Logo" class="product-logo" />
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.date_release }}</td>
+            <td>{{ product.date_revision }}</td>
+            <td>
+              <div class="dropdown">
+                <button class="action-button" (click)="toggleDropdown(product.id)">⋮</button>
+                <div class="dropdown-content" *ngIf="dropdownOpen[product.id]">
+                  <button (click)="editProduct(product.id)">Editar</button>
+                  <button (click)="confirmDelete(product.id)">Eliminar</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <div>Total de productos: {{ filteredProducts.length }}</div>
+      <select [(ngModel)]="pageSize" class="page-size-select">
+        <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+      </select>
+    </div>
+  </div>
+</div>
